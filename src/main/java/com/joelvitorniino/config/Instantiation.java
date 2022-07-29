@@ -13,8 +13,5 @@ public class Instantiation implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Monkey monkeyOne = new Monkey(null, "https://");
-
-        repository.save(monkeyOne);
     }
 }
