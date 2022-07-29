@@ -49,4 +49,13 @@ public class Monkey implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getLinks());
+
+        return sb.toString();
+    }
 }
