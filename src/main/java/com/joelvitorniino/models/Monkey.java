@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "links")
+@Table(name = "monkey_links")
 public class Monkey implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
