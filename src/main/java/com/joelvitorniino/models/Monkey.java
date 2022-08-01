@@ -11,14 +11,14 @@ public class Monkey implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String links;
+    private String url;
 
     public Monkey() {
     }
 
-    public Monkey(Integer id, String links) {
+    public Monkey(Integer id, String url) {
         this.id = id;
-        this.links = links;
+        this.url = url;
     }
 
     public Integer getId() {
@@ -29,12 +29,12 @@ public class Monkey implements Serializable {
         this.id = id;
     }
 
-    public String getLinks() {
-        return links;
+    public String getURL() {
+        return url;
     }
 
-    public void setLinks(String links) {
-        this.links = links;
+    public void setURL(String url) {
+        this.url = url;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Monkey implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(getLinks());
+        sb.append(getURL());
 
         return sb.toString();
     }
