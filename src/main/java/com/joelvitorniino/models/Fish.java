@@ -41,8 +41,8 @@ public class Fish implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Fish monkey = (Fish) o;
-        return Objects.equals(id, monkey.id);
+        Fish fish = (Fish) o;
+        return Objects.equals(id, fish.id);
     }
 
     @Override
