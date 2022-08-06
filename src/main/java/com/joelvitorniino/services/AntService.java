@@ -1,5 +1,6 @@
 package com.joelvitorniino.services;
 
+import com.joelvitorniino.dto.AntDTO;
 import com.joelvitorniino.models.Ant;
 import com.joelvitorniino.repository.AntRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class AntService {
 
     public Ant insert(Ant obj) {
         return repository.save(obj);
+    }
+
+    public Ant fromDTO(AntDTO objDto) {
+        return new Ant(objDto.getId(), objDto.getUrl());
     }
 }
