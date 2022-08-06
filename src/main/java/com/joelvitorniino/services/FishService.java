@@ -1,5 +1,6 @@
 package com.joelvitorniino.services;
 
+import com.joelvitorniino.dto.FishDTO;
 import com.joelvitorniino.models.Fish;
 import com.joelvitorniino.repository.FishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class FishService {
 
     public Fish insert(Fish obj) {
         return repository.save(obj);
+    }
+
+    public Fish fromDTO(FishDTO objDto) {
+        return new Fish(objDto.getId(), objDto.getUrl());
     }
 }
