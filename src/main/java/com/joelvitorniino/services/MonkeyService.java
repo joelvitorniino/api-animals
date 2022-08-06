@@ -1,5 +1,6 @@
 package com.joelvitorniino.services;
 
+import com.joelvitorniino.dto.MonkeyDTO;
 import com.joelvitorniino.models.Monkey;
 import com.joelvitorniino.repository.MonkeyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class MonkeyService {
 
     public Monkey insert(Monkey obj) {
         return repository.save(obj);
+    }
+
+    public Monkey fromDTO(MonkeyDTO objDto) {
+        return new Monkey(objDto.getId(), objDto.getUrl());
     }
 }
