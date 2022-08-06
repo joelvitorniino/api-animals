@@ -1,5 +1,6 @@
 package com.joelvitorniino.services;
 
+import com.joelvitorniino.dto.LadyBugDTO;
 import com.joelvitorniino.models.LadyBug;
 import com.joelvitorniino.repository.LadyBugRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class LadyBugService {
 
     public LadyBug insert(LadyBug obj) {
         return repository.save(obj);
+    }
+
+    public LadyBug fromDTO(LadyBugDTO objDto) {
+        return new LadyBug(objDto.getId(), objDto.getUrl());
     }
 }
