@@ -1,5 +1,6 @@
 package com.joelvitorniino.services;
 
+import com.joelvitorniino.dto.MacawDTO;
 import com.joelvitorniino.models.Macaw;
 import com.joelvitorniino.repository.MacawRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class MacawService {
 
     public Macaw insert(Macaw obj) {
         return repository.save(obj);
+    }
+
+    public Macaw fromDTO(MacawDTO objDto) {
+        return new Macaw(objDto.getId(), objDto.getUrl());
     }
 }
