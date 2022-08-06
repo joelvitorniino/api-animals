@@ -16,7 +16,7 @@ public class MacawResource {
     @Autowired
     MacawService service;
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Macaw>> getFish() {
+    public ResponseEntity<List<Macaw>> getMacaw() {
 
         return ResponseEntity.ok().body(service.findAll());
     }
