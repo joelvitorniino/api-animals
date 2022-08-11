@@ -37,7 +37,7 @@ public class BirdService {
         return repository.save(obj);
     }
 
-    public Bird fromDTO(Bird objDto) {
+    public Bird fromDTO(BirdDTO objDto) {
         return new Bird(objDto.getId(), objDto.getURL());
     }
 }
