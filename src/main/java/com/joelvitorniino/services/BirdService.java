@@ -38,6 +38,6 @@ public class BirdService {
     }
 
     public Bird fromDTO(BirdDTO objDto) {
-        return new Bird(objDto.getId(), objDto.getURL());
+        return new Bird(objDto.getId(), objDto.getUrl());
     }
 }
