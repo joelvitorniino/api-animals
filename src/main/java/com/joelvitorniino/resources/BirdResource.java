@@ -34,6 +34,12 @@ public class BirdResource {
         return ResponseEntity.created(uri).build();
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @RequestMapping(value = "/random", method = RequestMethod.GET)
     public ResponseEntity<String> randomBird() {
         return ResponseEntity.ok().body(service.randomPhotoBird());
