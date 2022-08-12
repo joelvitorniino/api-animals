@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -39,6 +40,10 @@ public class BirdService {
 
     public void deleteById(Integer id) {
         repository.deleteById(id);
+    }
+
+    public Optional<Bird> findById(Integer id) {
+        return repository.findById(id);
     }
 
     public Bird fromDTO(BirdDTO objDto) {
