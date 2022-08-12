@@ -1,11 +1,8 @@
 package com.joelvitorniino.resources;
 
 import com.joelvitorniino.dto.BirdDTO;
-import com.joelvitorniino.dto.MacawDTO;
 import com.joelvitorniino.models.Bird;
-import com.joelvitorniino.models.Macaw;
 import com.joelvitorniino.services.BirdService;
-import com.joelvitorniino.services.MacawService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

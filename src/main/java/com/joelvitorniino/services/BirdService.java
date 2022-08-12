@@ -37,6 +37,10 @@ public class BirdService {
         return repository.save(obj);
     }
 
+    public void deleteById(Integer id) {
+        repository.deleteById(id);
+    }
+
     public Bird fromDTO(BirdDTO objDto) {
         return new Bird(objDto.getId(), objDto.getUrl());
     }
