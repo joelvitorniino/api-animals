@@ -3,6 +3,7 @@ package com.joelvitorniino.services;
 import com.joelvitorniino.dto.BirdDTO;
 import com.joelvitorniino.models.Bird;
 import com.joelvitorniino.repository.BirdRepository;
+import com.joelvitorniino.services.exception.ImageNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,11 +40,31 @@ public class BirdService {
     }
 
     public void deleteById(Integer id) {
+        findById(id);
         repository.deleteById(id);
     }
 
     public Optional<Bird> findById(Integer id) {
-        return repository.findById(id);
+        Optional<Bird> bird = repository.findById(id);
+
+        if(bird.isPresent()) {
+            return bird;
+        } else {
+            bird.orElseThrow(() -> new ImageNotFoundException("Image is not found"));
+        }
+
+        return bird;
+    }
+
+    public Bird update(Bird obj) {
+        Bird newObj = repository.findById(obj.getId()).get();
+        updateData(newObj, obj);
+
+        return repository.save(newObj);
+    }
+
+    private void updateData(Bird newObj, Bird obj) {
+        newObj.setURL(obj.getURL());
     }
 
     public Bird fromDTO(BirdDTO objDto) {
