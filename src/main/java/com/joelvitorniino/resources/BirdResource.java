@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -38,6 +39,13 @@ public class BirdResource {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<BirdDTO> findById(@PathVariable Integer id) {
+        Bird obj = service.findById(id).get();
+
+        return ResponseEntity.ok().body(new BirdDTO(obj));
     }
 
     @RequestMapping(value = "/random", method = RequestMethod.GET)
