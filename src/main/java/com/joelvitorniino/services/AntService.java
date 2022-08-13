@@ -2,11 +2,14 @@ package com.joelvitorniino.services;
 
 import com.joelvitorniino.dto.AntDTO;
 import com.joelvitorniino.models.Ant;
+import com.joelvitorniino.models.Bird;
 import com.joelvitorniino.repository.AntRepository;
+import com.joelvitorniino.services.exception.ImageNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -35,6 +38,18 @@ public class AntService {
 
     public Ant insert(Ant obj) {
         return repository.save(obj);
+    }
+
+    public Optional<Ant> findById(Integer id) {
+        Optional<Ant> ant = repository.findById(id);
+
+        if(ant.isPresent()) {
+            return ant;
+        } else {
+            ant.orElseThrow(() -> new ImageNotFoundException("Image is not found"));
+        }
+
+        return ant;
     }
 
     public Ant fromDTO(AntDTO objDto) {
