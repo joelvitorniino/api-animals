@@ -34,6 +34,13 @@ public class AntResource {
         return ResponseEntity.created(uri).build();
     }
 
+    @GetMapping(value = {"/{id}"})
+    public ResponseEntity<AntDTO> findById(@PathVariable Integer id) {
+        Ant obj = service.findById(id).get();
+
+        return ResponseEntity.ok().body(new AntDTO(obj));
+    }
+
     @RequestMapping(value = "/random", method = RequestMethod.GET)
     public ResponseEntity<String> randomAnt() {
         return ResponseEntity.ok().body(service.randomPhotoAnt());
