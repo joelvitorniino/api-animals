@@ -1,6 +1,8 @@
 package com.joelvitorniino.resources;
 
+import com.joelvitorniino.dto.AntDTO;
 import com.joelvitorniino.dto.LadyBugDTO;
+import com.joelvitorniino.models.Ant;
 import com.joelvitorniino.models.LadyBug;
 import com.joelvitorniino.services.LadyBugService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,13 @@ public class LadyBugResource {
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping(value = {"/{id}"})
+    public ResponseEntity<LadyBugDTO> findById(@PathVariable Integer id) {
+        LadyBug obj = service.findById(id).get();
+
+        return ResponseEntity.ok().body(new LadyBugDTO(obj));
     }
 
     @RequestMapping(value = "/random", method = RequestMethod.GET)
