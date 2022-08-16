@@ -1,12 +1,15 @@
 package com.joelvitorniino.services;
 
 import com.joelvitorniino.dto.LadyBugDTO;
+import com.joelvitorniino.models.Ant;
 import com.joelvitorniino.models.LadyBug;
 import com.joelvitorniino.repository.LadyBugRepository;
+import com.joelvitorniino.services.exception.ImageNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -36,6 +39,19 @@ public class LadyBugService {
     public LadyBug insert(LadyBug obj) {
         return repository.save(obj);
     }
+
+    public Optional<LadyBug> findById(Integer id) {
+        Optional<LadyBug> ladybug = repository.findById(id);
+
+        if(ladybug.isPresent()) {
+            return ladybug;
+        } else {
+            ladybug.orElseThrow(() -> new ImageNotFoundException("Image is not found"));
+        }
+
+        return ladybug;
+    }
+
 
     public LadyBug fromDTO(LadyBugDTO objDto) {
         return new LadyBug(objDto.getId(), objDto.getUrl());
