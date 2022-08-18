@@ -1,12 +1,15 @@
 package com.joelvitorniino.services;
 
 import com.joelvitorniino.dto.MacawDTO;
+import com.joelvitorniino.models.LadyBug;
 import com.joelvitorniino.models.Macaw;
 import com.joelvitorniino.repository.MacawRepository;
+import com.joelvitorniino.services.exception.ImageNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -35,6 +38,18 @@ public class MacawService {
 
     public Macaw insert(Macaw obj) {
         return repository.save(obj);
+    }
+
+    public Optional<Macaw> findById(Integer id) {
+        Optional<Macaw> macaw = repository.findById(id);
+
+        if(macaw.isPresent()) {
+            return macaw;
+        } else {
+            macaw.orElseThrow(() -> new ImageNotFoundException("Image is not found"));
+        }
+
+        return macaw;
     }
 
     public Macaw fromDTO(MacawDTO objDto) {
