@@ -1,6 +1,8 @@
 package com.joelvitorniino.resources;
 
+import com.joelvitorniino.dto.AntDTO;
 import com.joelvitorniino.dto.MacawDTO;
+import com.joelvitorniino.models.Ant;
 import com.joelvitorniino.models.Macaw;
 import com.joelvitorniino.services.MacawService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,13 @@ public class MacawResource {
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping(value = {"/{id}"})
+    public ResponseEntity<MacawDTO> findById(@PathVariable Integer id) {
+        Macaw obj = service.findById(id).get();
+
+        return ResponseEntity.ok().body(new MacawDTO(obj));
     }
 
     @RequestMapping(value = "/random", method = RequestMethod.GET)
