@@ -43,6 +43,12 @@ public class MacawResource {
         return ResponseEntity.ok().body(new MacawDTO(obj));
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @RequestMapping(value = "/random", method = RequestMethod.GET)
     public ResponseEntity<String> randomMacaw() {
         return ResponseEntity.ok().body(service.randomPhotoMacaw());
