@@ -40,6 +40,11 @@ public class MacawService {
         return repository.save(obj);
     }
 
+    public void deleteById(Integer id) {
+        findById(id);
+        repository.deleteById(id);
+    }
+
     public Optional<Macaw> findById(Integer id) {
         Optional<Macaw> macaw = repository.findById(id);
 
@@ -51,6 +56,8 @@ public class MacawService {
 
         return macaw;
     }
+
+
 
     public Macaw fromDTO(MacawDTO objDto) {
         return new Macaw(objDto.getId(), objDto.getUrl());
